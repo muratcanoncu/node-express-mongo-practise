@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav {
+  width: 100%;
+  height: 60px;
+  background-color: forestgreen;
+  display: flex;
+  align-items: center;
+}
+nav h1 {
+  margin: 0 20px;
+}
+nav h1 a {
+  color: white;
+}
+nav h1 a:hover {
+  color: lightgray;
+  text-decoration: none;
+}
+main {
+  width: 100%;
+  height: calc(100vh - 120px);
+  background-color: lightgreen;
+}
+main .home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 450px;
+}
+main .home h1 {
+  text-align: center;
+  margin-bottom: 80px;
+  padding-top: 80px;
+}
+main .home .loginAccess {
+  width: 340px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .home .loginAccess button {
+  width: 60%;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+main .home .loginAccess button:hover {
+  background-color: greenyellow;
+  transition: 0.3s;
+}
+main .home .loginAccess button a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+footer {
+  background-color: forestgreen;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  color: white;
+}
+footer div {
+  text-align: center;
+  width: 300px;
+}
+footer div a {
+  color: white;
+}
+footer div a:hover {
+  color: lightgray;
+  text-decoration: none;
+}

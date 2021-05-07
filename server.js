@@ -4,6 +4,7 @@ const PORT = 9000;
 
 app.use(express.static(`${__dirname}/public`));
 app.set("view engine", "hbs");
+app.use(express.urlencoded({ extended: false }));
 
 //! Routes
 const indexRoute = require("./routes/indexRoute");
