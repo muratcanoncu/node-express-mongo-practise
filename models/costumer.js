@@ -5,8 +5,9 @@ const costumerSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  country: String,
   age: Number,
+  role: String,
+  profilePic: String,
 });
 
 const Costumer = mongoose.model("Costumer", costumerSchema);
