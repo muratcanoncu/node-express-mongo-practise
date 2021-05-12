@@ -23,7 +23,8 @@ nav h1 a:hover {
 }
 main {
   width: 100%;
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
+  height: auto;
 }
 main .home {
   width: 100%;
@@ -109,6 +110,7 @@ main .signUp {
   align-items: center;
   flex-direction: column;
   padding-bottom: 450px;
+  padding-top: 100px;
 }
 main .signUp form {
   margin-top: 40px;

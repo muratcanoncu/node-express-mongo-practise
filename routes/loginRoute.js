@@ -6,6 +6,6 @@ router.get("/", loginControllers.loginForm);
 // router.post("/", indexControllers.loginFormPost)
 
 router.get("/register", loginControllers.signUpForm);
-// router.post("/register", indexControllers.signUpFormPost);
+router.post("/register", loginControllers.signUpFormPost);
 
 module.exports = router;

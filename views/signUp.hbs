@@ -1,6 +1,10 @@
 <div class="signUp">
   <h1>This is signup</h1>
-
+  {{#if message.isMailTaken}}
+    <div class="alert alert-danger text-center mt-3 mb-3" role="alert">
+      <h4 class="font-weight-bolder m-0">{{message.takenMessage}}</h4>
+    </div>
+  {{/if}}
   <form action="/login/register" method="POST">
 
     <div
@@ -27,20 +31,12 @@
       <label class="text-center">Password</label>
       <input type="password" name="password" required />
     </div>
-    <div
-      class="d-flex justify-content-center flex-column align-items-center w-100"
-    >
-      <label class="text-center">Role</label>
-      <select name="role" required>
-        <option value="admin" selected>Admin</option>
-        <option value="customer">Customer</option>
-      </select>
-    </div>
+
     <div
       class="d-flex justify-content-center flex-column align-items-center w-100"
     >
       <label class="text-center">Profile Picture</label>
-      <input type="file" name="profilePic" />
+      <input type="file" name="profilePic" class="pl-5" />
     </div>
     <div class="d-flex justify-content-center align-items-center w-100 px-4">
       <button
