@@ -1,6 +1,10 @@
 <div class="login">
   <h1>Please Log In</h1>
-
+  {{#if message.falseEntered}}
+    <div class="alert alert-warning text-center mt-3 mb-3" role="alert">
+      <h4 class="font-weight-bolder m-0">{{message.failMessage}}</h4>
+    </div>
+  {{/if}}
   <form action="/login" method="POST">
     <div
       class="d-flex justify-content-center flex-column align-items-center w-100"
