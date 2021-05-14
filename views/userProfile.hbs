@@ -1,4 +1,14 @@
 <div class="userProfile">
+  {{#if query.messageAdded}}
+    <div class="alert alert-success text-center" role="alert">
+      {{query.addMessage}}
+    </div>
+  {{/if}}
+  {{#if query.messageDeleted}}
+    <div class="alert alert-danger text-center" role="alert">
+      {{query.deleteMessage}}
+    </div>
+  {{/if}}
   <h1 class="text-center m-4">User Profile</h1>
   <div
     class="d-flex justify-content-between w-50 px-4 mx-auto border-bottom border-dark pb-4 align-items-center"
@@ -9,6 +19,7 @@
     />
     <div>
       <h2 class="font-weight-bold w-100">Username: {{userDataBase.name}}</h2>
+      <button class="btn btn-danger"><a href="/login">Sign Out!</a></button>
       <form
         action="/login/userprofile"
         method="POST"
@@ -30,12 +41,9 @@
         <div class="postBox">
           <img src="/img/uploads/{{this.filename}}" />
           <div class="d-flex">
-            <button class="btn btn-danger w-50"><a
+            <button class="btn btn-danger w-100"><a
                 href="/login/userprofile/delete/{{this._id}}"
               >Delete</a></button>
-            <button class="btn btn-warning w-50"><a
-                href="/login/userprofile/update/:id"
-              >Update</a></button>
           </div>
         </div>
       {{/each}}

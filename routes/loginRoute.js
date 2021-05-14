@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const auth = require("../config/auth");
 const loginControllers = require("../controllers/loginControllers");
 
-router.get("/", loginControllers.loginForm);
+router.get("/", auth.checkLogin, loginControllers.loginForm);
 router.post("/", loginControllers.loginFormPost);
 router.get("/register", loginControllers.signUpForm);
 const storage = multer.diskStorage({

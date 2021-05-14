@@ -1,6 +1,7 @@
 const url = require("url");
 const Profile = require("../models/Profile");
 const bcrypt = require("bcrypt");
+
 const loginForm = (req, res) => {
   const message = req.query;
   res.render("login", { message });
@@ -82,8 +83,12 @@ const signUpFormPost = (req, res) => {
 };
 const userProfile = async (req, res) => {
   const userQuery = req.query;
-  await Profile.findOne({ email: userQuery.email }, (err, profile) => {
-    res.render("userProfile", { userDataBase: profile });
+  const activeUser = req.session.loggedInProfile;
+  await Profile.findOne({ email: activeUser.email }, (err, profile) => {
+    res.render("userProfile", {
+      userDataBase: profile,
+      query: userQuery,
+    });
   });
 };
 const userProfilePost = async (req, res) => {
@@ -98,6 +103,8 @@ const userProfilePost = async (req, res) => {
           pathname: "/login/userprofile",
           query: {
             email: profile.email,
+            addMessage: "New post is successfully added!",
+            messageAdded: true,
           },
         })
       );
@@ -117,6 +124,8 @@ const deletePost = (req, res) => {
           pathname: "/login/userprofile",
           query: {
             email: activeUserEmail,
+            deleteMessage: "Post is successfully deleted!",
+            messageDeleted: true,
           },
         })
       );
