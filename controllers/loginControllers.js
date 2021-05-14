@@ -105,7 +105,23 @@ const userProfilePost = async (req, res) => {
   );
 };
 const deletePost = (req, res) => {
-  const UserId = req.params.id;
+  const postId = req.params.id;
+  const activeUserEmail = req.session.loggedInProfile.email;
+  Profile.update(
+    { email: activeUserEmail },
+    { $pull: { gallery: { _id: postId } } },
+    { safe: true },
+    (err, obj) => {
+      res.redirect(
+        url.format({
+          pathname: "/login/userprofile",
+          query: {
+            email: activeUserEmail,
+          },
+        })
+      );
+    }
+  );
 };
 module.exports = {
   loginForm,
