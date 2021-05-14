@@ -1,1 +1,44 @@
-<h1>User Profile</h1>
+<div class="userProfile">
+  <h1 class="text-center m-4">User Profile</h1>
+  <div
+    class="d-flex justify-content-between w-50 px-4 mx-auto border-bottom border-dark pb-4 align-items-center"
+  >
+    <img
+      src="/img/uploads/{{userDataBase.profilePic}}"
+      class="userProfilePicture"
+    />
+    <div>
+      <h2 class="font-weight-bold w-100">Username: {{userDataBase.name}}</h2>
+      <form
+        action="/login/userprofile"
+        method="POST"
+        enctype="multipart/form-data"
+        class="d-flex flex-column align-items-start"
+      >
+        <label class="pl-4"><h5>Upload a new photo</h5></label>
+        <input type="file" name="userPosts" multiple />
+        <button class="w-50 mt-1 btn btn-secondary">Upload</button>
+      </form>
+    </div>
+
+  </div>
+  <div
+    class="Posts w-75 mx-auto d-flex justify-content-start flex-wrap align-items-center"
+  >
+    {{#if userDataBase.gallery}}
+      {{#each userDataBase.gallery}}
+        <div class="postBox">
+          <img src="/img/uploads/{{this.filename}}" />
+          <div class="d-flex">
+            <button class="btn btn-danger w-50"><a
+                href="/login/userprofile/delete/:id"
+              >Delete</a></button>
+            <button class="btn btn-warning w-50"><a
+                href="/login/userprofile/update/:id"
+              >Update</a></button>
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+</div>

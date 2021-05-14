@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const multer = require("multer");
+
 const session = require("express-session");
 app.use(
   session({
@@ -16,15 +16,7 @@ const PORT = 9000;
 app.use(express.static(`${__dirname}/public`));
 app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: false }));
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "public/uploadedImage");
-  },
-  filename: (req, file, callback) => {
-    callback(null, `${Date.now()}_${file.originalname}`);
-  },
-});
-const upload = multer({ storage });
+
 //! Routes
 const indexRoute = require("./routes/indexRoute");
 const loginRoute = require("./routes/loginRoute");

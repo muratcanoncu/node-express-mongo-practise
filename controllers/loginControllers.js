@@ -32,13 +32,11 @@ const loginFormPost = (req, res) => {
           );
         } else {
           req.session.loggedInProfile = profile;
-          console.log(req.session.loggedInProfile);
           res.redirect(
             url.format({
               pathname: "/login/userprofile",
               query: {
-                userName: profile.name,
-                userPhoto: profile.pictureName,
+                email: profile.email,
               },
             })
           );
@@ -48,6 +46,7 @@ const loginFormPost = (req, res) => {
   });
 };
 
+//! Signup ----------
 const signUpForm = (req, res) => {
   const message = req.query;
   res.render("signUp", { message });
@@ -81,8 +80,32 @@ const signUpFormPost = (req, res) => {
     }
   });
 };
-const userProfile = (req, res) => {
-  res.render("userProfile");
+const userProfile = async (req, res) => {
+  const userQuery = req.query;
+  await Profile.findOne({ email: userQuery.email }, (err, profile) => {
+    res.render("userProfile", { userDataBase: profile });
+  });
+};
+const userProfilePost = async (req, res) => {
+  const userId = req.session.loggedInProfile._id;
+  const arrayOfPictures = req.files;
+  Profile.findOneAndUpdate(
+    userId,
+    { $push: { gallery: arrayOfPictures } },
+    (err, profile) => {
+      res.redirect(
+        url.format({
+          pathname: "/login/userprofile",
+          query: {
+            email: profile.email,
+          },
+        })
+      );
+    }
+  );
+};
+const deletePost = (req, res) => {
+  const UserId = req.params.id;
 };
 module.exports = {
   loginForm,
@@ -90,4 +113,6 @@ module.exports = {
   signUpForm,
   signUpFormPost,
   userProfile,
+  userProfilePost,
+  deletePost,
 };
