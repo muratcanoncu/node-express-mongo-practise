@@ -25,21 +25,8 @@ app.use("/", indexRoute);
 app.use("/login", loginRoute);
 
 app.get("*", (req, res) => {
-  res.send("Wrong path");
+  res.render("wrongPath");
 });
 app.listen(PORT, () => {
   console.log("Server is running on PORT::" + PORT);
 });
-
-//!_________
-// app.get("/uploadform", (req, res) => {
-//   res.render("fileForm");
-// });
-// // upload.array("pictures")
-// app.post("/uploadForm", upload.array("profilePic"), (req, res) => {
-//   // console.log("uploadData:", req.file);
-//   // console.log("uploadData:", req.files);
-//   const arrayOfPictures = req.files;
-//   console.log(arrayOfPictures);
-//   res.render("fileForm", { pictureArray: arrayOfPictures });
-// });
