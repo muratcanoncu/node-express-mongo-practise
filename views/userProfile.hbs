@@ -18,10 +18,9 @@
       class="userProfilePicture"
     />
     <div class="d-flex flex-column align-items-end">
-      <h2 class="font-weight-bold w-50">Username: {{userDataBase.name}}</h2>
-      {{! <button class="btn btn-dark mb-2"> }}
+      <h2 class="font-weight-bold mb-4 w-100">Username:<br
+        />{{userDataBase.name}}</h2>
       <a class="signOutButton" href="/login/logout">Sign Out!</a>
-      {{! </button> }}
       <form
         action="/login/userprofile"
         method="POST"
@@ -43,12 +42,10 @@
         <div class="postBox">
           <img src="/img/uploads/{{this.filename}}" />
           <div class="d-flex">
-            {{! <button class="btn btn-danger w-100"> }}
             <a
               class="signOutButton w-100 h5 bg-secondary"
               href="/login/userprofile/delete/{{this._id}}"
             >Delete</a>
-            {{! </button> }}
           </div>
         </div>
       {{/each}}

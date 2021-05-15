@@ -101,7 +101,7 @@ const userProfilePost = async (req, res) => {
     { _id: userId },
     { $push: { gallery: arrayOfPictures } },
     (err, profile) => {
-      console.log(profile);
+      console.log(`${profile.name} added post/s`);
       res.redirect(
         url.format({
           pathname: "/login/userprofile",

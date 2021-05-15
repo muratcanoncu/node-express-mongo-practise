@@ -154,10 +154,10 @@ main .userProfile {
   height: auto;
 }
 main .userProfile .userProfilePicture {
-  width: 300px;
-  height: 250px;
+  width: 350px;
+  height: 320px;
   border-radius: 50%;
-  border: 4px solid black;
+  border: 5px solid black;
 }
 main .userProfile .postBox {
   border: 1px solid white;
@@ -192,18 +192,19 @@ main .userProfile .postBox img {
   padding: 3px 5px;
 }
 .profileHeader {
-  width: 55%;
-  height: 350px;
+  width: 65%;
+  height: 400px;
   background: url("../img/headerBg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: 30% 41%;
-  /* background-color: lightgray; */
-  padding: 10px;
-  border-top: 2px solid gray;
-  border-right: 2px solid gray;
-  border-left: 2px solid gray;
+  padding: 30px 40px;
+  border-top: 3px solid gray;
+  border-right: 3px solid gray;
+  border-left: 3px solid gray;
 }
 .postContainer {
-  border-top: 4px solid black;
+  border-top: 5px solid black;
   margin-bottom: 50px;
 }
 footer {
