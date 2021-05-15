@@ -6,6 +6,7 @@ const loginControllers = require("../controllers/loginControllers");
 
 router.get("/", auth.checkLogin, loginControllers.loginForm);
 router.post("/", loginControllers.loginFormPost);
+router.get("/logout", auth.logOut, loginControllers.logOut);
 router.get("/register", loginControllers.signUpForm);
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -22,7 +23,7 @@ router.post(
   upload.single("profilePic"),
   loginControllers.signUpFormPost
 );
-router.get("/userprofile", loginControllers.userProfile);
+router.get("/userprofile", auth.notLoggedIn, loginControllers.userProfile);
 router.post(
   "/userprofile",
   upload.array("userPosts"),

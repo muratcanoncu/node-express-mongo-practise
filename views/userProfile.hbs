@@ -11,39 +11,44 @@
   {{/if}}
   <h1 class="text-center m-4">User Profile</h1>
   <div
-    class="d-flex justify-content-between w-50 px-4 mx-auto border-bottom border-dark pb-4 align-items-center"
+    class="d-flex justify-content-between mx-auto pb-4 align-items-center profileHeader"
   >
     <img
       src="/img/uploads/{{userDataBase.profilePic}}"
       class="userProfilePicture"
     />
-    <div>
-      <h2 class="font-weight-bold w-100">Username: {{userDataBase.name}}</h2>
-      <button class="btn btn-danger"><a href="/login">Sign Out!</a></button>
+    <div class="d-flex flex-column align-items-end">
+      <h2 class="font-weight-bold w-50">Username: {{userDataBase.name}}</h2>
+      {{! <button class="btn btn-dark mb-2"> }}
+      <a class="signOutButton" href="/login/logout">Sign Out!</a>
+      {{! </button> }}
       <form
         action="/login/userprofile"
         method="POST"
         enctype="multipart/form-data"
-        class="d-flex flex-column align-items-start"
+        class="d-flex flex-column align-items-start uploadForm"
       >
-        <label class="pl-4"><h5>Upload a new photo</h5></label>
+        <label class="pl-4"><h5 class="mb-0">Upload a new photo</h5></label>
         <input type="file" name="userPosts" multiple />
-        <button class="w-50 mt-1 btn btn-secondary">Upload</button>
+        <button class="w-100 mt-1 btn btn-secondary">Upload</button>
       </form>
     </div>
 
   </div>
   <div
-    class="Posts w-75 mx-auto d-flex justify-content-start flex-wrap align-items-center"
+    class="Posts w-75 mx-auto d-flex justify-content-start flex-wrap align-items-center postContainer"
   >
     {{#if userDataBase.gallery}}
       {{#each userDataBase.gallery}}
         <div class="postBox">
           <img src="/img/uploads/{{this.filename}}" />
           <div class="d-flex">
-            <button class="btn btn-danger w-100"><a
-                href="/login/userprofile/delete/{{this._id}}"
-              >Delete</a></button>
+            {{! <button class="btn btn-danger w-100"> }}
+            <a
+              class="signOutButton w-100 h5 bg-secondary"
+              href="/login/userprofile/delete/{{this._id}}"
+            >Delete</a>
+            {{! </button> }}
           </div>
         </div>
       {{/each}}

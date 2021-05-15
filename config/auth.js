@@ -14,4 +14,11 @@ const logOut = (req, res, next) => {
     return next();
   }
 };
-module.exports = { checkLogin, logOut };
+const notLoggedIn = (req, res, next) => {
+  if (req.session.loggedInProfile) {
+    return next();
+  } else {
+    res.redirect("/login");
+  }
+};
+module.exports = { checkLogin, logOut, notLoggedIn };

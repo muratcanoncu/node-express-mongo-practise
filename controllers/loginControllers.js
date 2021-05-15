@@ -46,7 +46,10 @@ const loginFormPost = (req, res) => {
     }
   });
 };
-
+//! logout
+const logOut = (req, res) => {
+  res.redirect("/login");
+};
 //! Signup ----------
 const signUpForm = (req, res) => {
   const message = req.query;
@@ -95,9 +98,10 @@ const userProfilePost = async (req, res) => {
   const userId = req.session.loggedInProfile._id;
   const arrayOfPictures = req.files;
   Profile.findOneAndUpdate(
-    userId,
+    { _id: userId },
     { $push: { gallery: arrayOfPictures } },
     (err, profile) => {
+      console.log(profile);
       res.redirect(
         url.format({
           pathname: "/login/userprofile",
@@ -140,4 +144,5 @@ module.exports = {
   userProfile,
   userProfilePost,
   deletePost,
+  logOut,
 };
